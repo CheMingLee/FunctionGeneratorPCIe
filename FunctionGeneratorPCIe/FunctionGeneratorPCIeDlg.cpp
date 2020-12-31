@@ -153,3 +153,14 @@ HCURSOR CFunctionGeneratorPCIeDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+BOOL CFunctionGeneratorPCIeDlg::PreTranslateMessage(MSG* pMsg)
+{
+	if (WM_KEYDOWN == pMsg->message)
+	{
+		UINT nKey = (int)pMsg->wParam;
+		if (VK_RETURN == nKey)
+			return TRUE;
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
